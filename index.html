@@ -1,0 +1,325 @@
+<head>
+    <title>Maplestory Star Force Calculator</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <script src="src.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="unit">
+            <header>
+                <h1>Maplestory Star Force Calculator</h1>
+            </header>
+            <form onsubmit="calculate(); return false;">
+                <div>
+                    <label for="event">Event: </label>
+                    <select id="event">
+                        <option value="none">None</option>
+                        <option value="discount">30% Off</option>
+                        <option value="guarantee">5/10/15</option>
+                        <option value="extra">+2 for 1-10</option>
+                        <option value="shining">Shining</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="event-safeguard">Event: No Destroy Up to 15: </label>
+                    <input type="checkbox" id="event-safeguard" value="event-safeguard">
+                </div>
+                <div>
+                    <label for="mvp">MVP: </label>
+                    <select id="mvp">
+                        <option value="none">None</option>
+                        <option value="silver">Silver</option>
+                        <option value="gold">Gold</option>
+                        <option value="diamond">Diamond</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="level">Level: </label>
+                    <input type="number" id="level" required value="150" min="0" max="250">
+                </div>
+                <div>
+                    <label for="from">Current Stars: </label>
+                    <input type="number" id="from" required value="10" min="0" max="24">
+                </div>
+                <div>
+                    <label for="to">Target Stars: </label>
+                    <input type="number" id="to" required value="22" min="1" max="25">
+                </div>
+                <div>
+                    <label for="safeguard">Safeguard: </label>
+                    <input type="checkbox" id="safeguard" value="safeguard" onchange="toggleSafeguard()">
+                    <details id="safeguard-stars">
+                        <summary>Safeguard Stars</summary>
+                        <div>
+                            <span class="bold">Note:</span> These options are only used if the Safeguard option above is checked.
+                            <div>
+                                <label for="safeguard-12">12 to 13: </label>
+                                <input type="checkbox" id="safeguard-12" value="safeguard-12" checked disabled>
+                            </div>
+                            <div>
+                                <label for="safeguard-13">13 to 14: </label>
+                                <input type="checkbox" id="safeguard-13" value="safeguard-13" checked disabled>
+                            </div>
+                            <div>
+                                <label for="safeguard-14">14 to 15: </label>
+                                <input type="checkbox" id="safeguard-14" value="safeguard-14" checked disabled>
+                            </div>
+                            <div>
+                                <label for="safeguard-15">15 to 16: </label>
+                                <input type="checkbox" id="safeguard-15" value="safeguard-15" checked disabled>
+                            </div>
+                            <div>
+                                <label for="safeguard-16">16 to 17: </label>
+                                <input type="checkbox" id="safeguard-16" value="safeguard-16" checked disabled>
+                            </div>
+                        </div>
+                    </details>
+                </div>
+                <div>
+                    <label for="catcher">Star Catching: </label>
+                    <input type="checkbox" id="catcher" value="catcher" onchange="toggleCatcher()">
+                    <details id="catcher-stars">
+                        <summary>Star Catcher Stars</summary>
+                        <div>
+                            <span class="bold">Note:</span> These options are only used if the Star Catching option above is checked.
+                            <div>
+                                <input type="button" value="Check All" onclick="checkAllCatcher()" disabled>
+                                <input type="button" value="Uncheck All" onclick="uncheckAllCatcher()" disabled>
+                            </div>
+                            <div>
+                                <label for="catcher-0">0 to 5: </label>
+                                <input type="checkbox" id="catcher-0" value="catcher-0" checked disabled>
+                            </div>
+                            <div>
+                                <label for="catcher-5">5 to 10: </label>
+                                <input type="checkbox" id="catcher-5" value="catcher-5" checked disabled>
+                            </div>
+                            <div>
+                                <label for="catcher-10">10 to 11: </label>
+                                <input type="checkbox" id="catcher-10" value="catcher-10" checked disabled>
+                            </div>
+                            <div>
+                                <label for="catcher-11">11 to 12: </label>
+                                <input type="checkbox" id="catcher-11" value="catcher-11" checked disabled>
+                            </div>
+                            <div>
+                                <label for="catcher-12">12 to 13: </label>
+                                <input type="checkbox" id="catcher-12" value="catcher-12" checked disabled>
+                            </div>
+                            <div>
+                                <label for="catcher-13">13 to 14: </label>
+                                <input type="checkbox" id="catcher-13" value="catcher-13" checked disabled>
+                            </div>
+                            <div>
+                                <label for="catcher-14">14 to 15: </label>
+                                <input type="checkbox" id="catcher-14" value="catcher-14" checked disabled>
+                            </div>
+                            <div>
+                                <label for="catcher-15">15 to 16: </label>
+                                <input type="checkbox" id="catcher-15" value="catcher-15" checked disabled>
+                            </div>
+                            <div>
+                                <label for="catcher-16">16 to 17: </label>
+                                <input type="checkbox" id="catcher-16" value="catcher-16" checked disabled>
+                            </div>
+                            <div>
+                                <label for="catcher-17">17 to 18: </label>
+                                <input type="checkbox" id="catcher-17" value="catcher-17" checked disabled>
+                            </div>
+                            <div>
+                                <label for="catcher-18">18 to 19: </label>
+                                <input type="checkbox" id="catcher-18" value="catcher-18" checked disabled>
+                            </div>
+                            <div>
+                                <label for="catcher-19">19 to 20: </label>
+                                <input type="checkbox" id="catcher-19" value="catcher-19" checked disabled>
+                            </div>
+                            <div>
+                                <label for="catcher-20">20 to 21: </label>
+                                <input type="checkbox" id="catcher-20" value="catcher-20" checked disabled>
+                            </div>
+                            <div>
+                                <label for="catcher-21">21 to 22: </label>
+                                <input type="checkbox" id="catcher-21" value="catcher-21" checked disabled>
+                            </div>
+                            <div>
+                                <label for="catcher-22">22 to 23: </label>
+                                <input type="checkbox" id="catcher-22" value="catcher-22" checked disabled>
+                            </div>
+                            <div>
+                                <label for="catcher-23">23 to 24: </label>
+                                <input type="checkbox" id="catcher-23" value="catcher-23" checked disabled>
+                            </div>
+                            <div>
+                                <label for="catcher-24">24 to 25: </label>
+                                <input type="checkbox" id="catcher-24" value="catcher-24" checked disabled>
+                            </div>
+                        </div>
+                    </details>
+                </div>
+                <input type="submit" value="Calculate">
+            </form>
+            <div id="results"></div>
+            <footer>
+                <div>
+                    Original SF Calculator by blushiemagic, UI adjusted by EliteFuture
+                    <br />
+                    <a href="https://github.com/blushiemagic/Maplestory-Starforce-Calculator">Original blushiemagic Source Code</a>
+                </div>
+            </footer>
+        </div>
+        <div class="unit">
+            <header>
+                <h1>Origin Splitter</h1>
+            </header>
+            <form onsubmit="calculateOrigins(); return false;">
+                <div class="playerInfo">
+                    <span class="originSubheader">
+                        <span>Name</span>
+                        <span>Non-Origin</span>
+                        <span>Origin</span>
+                        <span>FD% To Party</span>
+                    </span>
+                    <span>
+                        <input class="splitInput" id="player1Name" value="Player1" />
+                        <input class="splitInput" type="number" id="player1N" value="0" min="0" step="0.0001" />
+                        <input class="splitInput" type="number" id="player1O" value="0" min="0" step="0.0001" />
+                        <input class="splitInput" type="number" id="player1FD" value="0" min="0" step="0.0001" />
+                    </span>
+                    <span>
+                        <input class="splitInput" id="player2Name" value="Player2" />
+                        <input class="splitInput" type="number" id="player2N" value="0" min="0" step="0.0001" />
+                        <input class="splitInput" type="number" id="player2O" value="0" min="0" step="0.0001" />
+                        <input class="splitInput" type="number" id="player2FD" value="0" min="0" step="0.0001" />
+                    </span>
+                    <span>
+                        <input class="splitInput" id="player3Name" value="player3" />
+                        <input class="splitInput" type="number" id="player3N" value="0" min="0" step="0.0001" />
+                        <input class="splitInput" type="number" id="player3O" value="0" min="0" step="0.0001" />
+                        <input class="splitInput" type="number" id="player3FD" value="0" min="0" step="0.0001" />
+                    </span>
+                    <span>
+                        <input class="splitInput" id="player4Name" value="player4" />
+                        <input class="splitInput" type="number" id="player4N" value="0" min="0" step="0.0001" />
+                        <input class="splitInput" type="number" id="player4O" value="0" min="0" step="0.0001" />
+                        <input class="splitInput" type="number" id="player4FD" value="0" min="0" step="0.0001" />
+                    </span>
+                    <span>
+                        <input class="splitInput" id="player5Name" value="player5" />
+                        <input class="splitInput" type="number" id="player5N" value="0" min="0" step="0.0001" />
+                        <input class="splitInput" type="number" id="player5O" value="0" min="0" step="0.0001" />
+                        <input class="splitInput" type="number" id="player5FD" value="0" min="0" step="0.0001" />
+                    </span>
+                    <span>
+                        <input class="splitInput" id="player6Name" value="player6" />
+                        <input class="splitInput" type="number" id="player6N" value="0" min="0" step="0.0001" />
+                        <input class="splitInput" type="number" id="player6O" value="0" min="0" step="0.0001" />
+                        <input class="splitInput" type="number" id="player6FD" value="0" min="0" step="0.0001" />
+                    </span>
+                    <br />
+                    <br />
+                    <span>
+                        <label for="fdOther">FD% From EVERYTHING Else(Gskills, Externals, Events)</label>
+                        <input type="number" id="fdOther" required value="50" min="0" step="0.0001">
+                    </span>
+                    <br />
+                    <span>
+                        <label for="fdSac">Apply 25% FD For Sac:</label>
+                        <input type="checkbox" id="fdSac">
+                    </span>
+                    <br />
+                    
+                    <input onclick="updateSymmetry()" type="radio" id="symmetricSplit" name="splitOption" value="symmetric" checked />
+                    <label for="evenSplit">Symmetric Split</label>
+                    <input onclick="updateSymmetry()" type="radio" id="asymmetricSplit" name="splitOption" value="asymmetric" />
+                    <label for="evenSplit">Asymmetric Split</label><br />
+                    <div id="asymmetricDiv" class="dontDisplay">
+                        <label for="minThreshold">Minimum Threshold: </label>
+                        <input type="number" id="minThreshold" value="1470" />
+                    </div>
+                </div>
+                <input type="submit" value="Calculate">
+            </form>
+            <div class="results" id="originResults"></div>
+            <footer>
+                <div>
+                    Created by EliteFuture
+                </div>
+            </footer>
+        </div>
+        <!--
+        <div class="unit">
+            <header>
+                <h1>Familiar Calculator</h1>
+            </header>
+            <form onsubmit="calculateOrigins(); return false;">
+                <div class="playerInfo">
+                    <span class="originSubheader">
+                        <span>Name</span>
+                        <span>Non-Origin</span>
+                        <span>Origin</span>
+                        <span>FD% To Party</span>
+                    </span>
+                    <span>
+                        <input class="splitInput" id="player1Name" value="Player1" />
+                        <input class="splitInput" type="number" id="player1N" value="0" min="0" step="0.0001" />
+                        <input class="splitInput" type="number" id="player1O" value="0" min="0" step="0.0001" />
+                        <input class="splitInput" type="number" id="player1FD" value="0" min="0" step="0.0001" />
+                    </span>
+                    <span>
+                        <input class="splitInput" id="player2Name" value="Player2" />
+                        <input class="splitInput" type="number" id="player2N" value="0" min="0" step="0.0001" />
+                        <input class="splitInput" type="number" id="player2O" value="0" min="0" step="0.0001" />
+                        <input class="splitInput" type="number" id="player2FD" value="0" min="0" step="0.0001" />
+                    </span>
+                    <span>
+                        <input class="splitInput" id="player3Name" value="player3" />
+                        <input class="splitInput" type="number" id="player3N" value="0" min="0" step="0.0001" />
+                        <input class="splitInput" type="number" id="player3O" value="0" min="0" step="0.0001" />
+                        <input class="splitInput" type="number" id="player3FD" value="0" min="0" step="0.0001" />
+                    </span>
+                    <span>
+                        <input class="splitInput" id="player4Name" value="player4" />
+                        <input class="splitInput" type="number" id="player4N" value="0" min="0" step="0.0001" />
+                        <input class="splitInput" type="number" id="player4O" value="0" min="0" step="0.0001" />
+                        <input class="splitInput" type="number" id="player4FD" value="0" min="0" step="0.0001" />
+                    </span>
+                    <span>
+                        <input class="splitInput" id="player5Name" value="player5" />
+                        <input class="splitInput" type="number" id="player5N" value="0" min="0" step="0.0001" />
+                        <input class="splitInput" type="number" id="player5O" value="0" min="0" step="0.0001" />
+                        <input class="splitInput" type="number" id="player5FD" value="0" min="0" step="0.0001" />
+                    </span>
+                    <span>
+                        <input class="splitInput" id="player6Name" value="player6" />
+                        <input class="splitInput" type="number" id="player6N" value="0" min="0" step="0.0001" />
+                        <input class="splitInput" type="number" id="player6O" value="0" min="0" step="0.0001" />
+                        <input class="splitInput" type="number" id="player6FD" value="0" min="0" step="0.0001" />
+                    </span>
+                    <br />
+                    <br />
+                    <span>
+                        <label for="fdOther">FD% From EVERYTHING Else(Gskills, Externals, Events)</label>
+                        <input type="number" id="fdOther" required value="50" min="0" step="0.0001">
+                    </span>
+                    <br />
+                    <span>
+                        <label for="fdSac">Apply 25% FD For Sac:</label>
+                        <input type="checkbox" id="fdSac">
+                    </span>
+                    <br />
+                </div>
+                <input type="submit" value="Calculate">
+            </form>
+            <div class="results" id="originResults"></div>
+            <footer>
+                <div>
+                    Created by EliteFuture
+                </div>
+            </footer>
+        </div>
+    </div>-->
+    <script>
+        load();
+    </script>
+</body>
